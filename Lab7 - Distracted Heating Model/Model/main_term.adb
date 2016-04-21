@@ -1,0 +1,22 @@
+-- main_term.adb
+-- materiały dydaktyczne
+-- 2016
+-- Jacek Piwowarczyk
+--
+-- UWAGA!!
+-- oprogramoanie zgodne z systemami:
+-- Linux i Mac OSX
+-- pod Windows ??? ... raczej nie
+
+pragma Profile(Ravenscar);
+with System;
+with Model; pragma Unreferenced(Model);
+with Terminal; pragma Unreferenced(Terminal);
+
+procedure Main_Term 
+  with Priority => System.Priority'First is
+begin
+  loop
+    null;
+  end loop;
+end Main_Term;
