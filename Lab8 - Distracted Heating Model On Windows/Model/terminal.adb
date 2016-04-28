@@ -14,24 +14,48 @@ with Ada.Exceptions;
 use Ada.Exceptions;
 with Model;
 use Model;
+with NT_Console;
+use NT_Console;
 
 package body Terminal is
 
   protected body Ekran is
     -- implementacja dla Linuxa i OSX
-    procedure Pisz_XY(X,Y: Positive; S: String; Atryb : Atrybuty := Czysty) is
-      Przed : String := ASCII.ESC & "[" &
-        (case Atryb is
-           when Jasny => "1m", when Podkreslony => "4m", when Negatyw => "7m",
-           when Migajacy => "5m", when Szary => "2m", when Czysty => "0m");
-    begin
-      Put(Przed);
-      Put(ASCII.ESC & "[" & Trim(Y'Img,Both) & ";" & Trim(X'Img,Both) & "H" & S);
-      Put(ASCII.ESC & "[0m");
+      procedure Pisz_XY(X,Y: Positive; S: String; Atryb : Atrybuty := Czysty) is
+         NColorF : Color_Type;
+         NColorB : Color_Type;
+         ColorF : Color_Type;
+         ColorB : Color_Type;
+      begin
+         if Atryb = Czysty then
+            NColorB := Black;
+            NColorF := White;
+         elsif Atryb = Jasny then
+            NColorB := Blue;
+            NColorF := Brown;
+         elsif Atryb = Podkreslony then
+            NColorB := Green;
+            NColorF := Red;
+         elsif Atryb = Negatyw then
+            NColorB := Light_Red;
+            NColorF := Light_Cyan;
+         else
+            NColorB := Yellow;
+            NColorF := Gray;
+         end if;
+
+         ColorF := Get_Foreground;
+         ColorB := Get_Background;
+         Set_Background(NColorB);
+         Set_Foreground(NColorF);
+         Goto_XY(X,Y);
+         Put(S);
+         Set_Background(ColorB);
+         Set_Foreground(ColorF);
     end Pisz_XY;
     procedure Czysc is
-    begin
-      Put(ASCII.ESC & "[2J");
+      begin
+         Clear_Screen;
     end Czysc;
   end Ekran;
 
@@ -67,12 +91,10 @@ package body Terminal is
       Ekran.Pisz_XY(4,6, Temp_Zadana.Obraz & " C ", Negatyw);
       Ekran.Pisz_XY(40, 5, "Temp. zewnetrzna");
       Ekran.Pisz_XY(44,6, Temp_Zewnetrzna.Obraz & " C ", Negatyw);
-      Ekran.Pisz_XY(43, 8, "Pora roku");
-      Ekran.Pisz_XY(45,9, Pora_Roku'Img, Negatyw);
       Ekran.Pisz_XY(4,8, "Sterowanie");
       Ekran.Pisz_XY(4,9, Stan_Ster'Img, Negatyw);
 
-      Ekran.Pisz_XY(3, 11, " Ctl-C .. Koniec; T. zadana -> D - w dół, G - w góre " & ASCII.ESC);
+      Ekran.Pisz_XY(3, 11, " Ctl-C .. Koniec; T. zadana -> D - w dol�, G - w gore " & ASCII.ESC);
       Nastepny := Nastepny + Okres;
     end loop;
   exception

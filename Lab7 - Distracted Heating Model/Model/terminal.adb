@@ -70,7 +70,7 @@ package body Terminal is
       Ekran.Pisz_XY(4,8, "Sterowanie");
       Ekran.Pisz_XY(4,9, Stan_Ster'Img, Negatyw);
 
-      Ekran.Pisz_XY(3, 11, " Ctl-C .. Koniec; T. zadana -> D - w dół, G - w góre " & ASCII.ESC);
+      Ekran.Pisz_XY(3, 11, " Ctl-C .. Koniec; T. zadana -> D - w dol�, G - w gore " & ASCII.ESC);
       Nastepny := Nastepny + Okres;
     end loop;
   exception

@@ -14,7 +14,6 @@ use Ada.Float_Text_IO;
 with Ada.Numerics.Float_Random;
 with Ada.Exceptions;
 use Ada.Exceptions;
-with GNAT.Sockets; use GNAT.Sockets;
 
 package body Model is
    
@@ -40,10 +39,7 @@ package body Model is
     with Priority => (System.Default_Priority+4);
 
   task Obiekt
-    with Priority => (System.Default_Priority+3);    
-
-  task EnviromentReceiver 
-    with Priority => (System.Default_Priority+5); 
+    with Priority => (System.Default_Priority+3);     
     
   task body Sterownik is 
     Nastepny : Ada.Real_Time.Time;
@@ -113,38 +109,12 @@ package body Model is
        Put_Line("Error: Zadanie Obiekt");
        Put_Line(Exception_Name (E) & ": " & Exception_Message (E));
   end Obiekt;   
-
-  task body EnviromentReceiver is
-    Nastepny : Ada.Real_Time.Time;
-    Okres   : constant Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(1200);
-    Address  : Sock_Addr_Type;
-    Socket   : Socket_Type;
-    Channel  : Stream_Access;
-    Dane     : Float := 0.0;
-  begin
-    Nastepny := Ada.Real_Time.Clock;
-    Address.Addr := Addresses (Get_Host_By_Name (Host_Name), 1);
-    Address.Port := 5021;
-    Create_Socket (Socket);
-    Set_Socket_Option (Socket, Socket_Level, (Reuse_Address, True));
-    Connect_Socket (Socket, Address);
-    Channel := Stream (Socket);
-    loop
-      String'Output (Channel, "GET");
-      Dane := Float'Input (Channel);      
-      Temp_Zewnetrzna.Wstaw(Dane);
-      Nastepny := Nastepny + Okres;
-    end loop;
-  exception
-     when E:others =>
-       Put_Line("Error: Zadanie Obiekt");
-       Put_Line(Exception_Name (E) & ": " & Exception_Message (E));
-  end EnviromentReceiver;
   
 begin
   -- inicjowanie
+  Temp_Zewnetrzna.Wstaw( -20.0 );
+  Pora_Roku := Zima;
   Temp_Zadana.Wstaw( 23.0 );
   Temp_Aktualna.Wstaw( 16.5 );
-  Temp_Zewnetrzna.Wstaw( 0.0 );
 end Model;
 
