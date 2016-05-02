@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project >
+    <file_marker column=" 21" line=" 16" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\terminal.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 12" line=" 143" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\terminal.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 18" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 27" line=" 156" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 24" line=" 108" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\commondata2.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 56" line=" 71" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\barrel.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 27" line=" 1" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\commondata.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 4" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\main_washingmachine.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 50" line=" 43" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\heater.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 24" line=" 33" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Lab4 - Semafors i sockets\Socket\kontroler_pak.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\pump.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\heater.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\barrel.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\heater.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\barrel.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\terminal.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 50" line=" 46" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\barrel.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\heater.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 20" line=" 30" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\pump.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 25" >
+      <vfs_project>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\pump.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\main_pump.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\commondata.ads</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.adb</vfs_file>
+    </file_marker>
+  </Project>
+  <Project >
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\terminal.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\terminal.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 30" line=" 51">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\terminal.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 30" line=" 51">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\terminal.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 17" line=" 55">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 25" line=" 61">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\commondata2.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 74" line=" 88">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\terminal.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\barrel.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 52" line=" 95">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\terminal.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 46" line=" 47">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\commondata.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 24" line=" 28">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\main_washingmachine.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\terminal.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 24" line=" 28">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\washingMachine.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\pump.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\barrel.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 36" line=" 48">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\barrel.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\heater.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\main_washingmachine.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 21" line=" 44">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\barrel.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Lab4 - Semafors i sockets\Socket\sensor_pak.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 21" line=" 44">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\barrel.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Lab4 - Semafors i sockets\Socket\kontroler_pak.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 57" line=" 69">
+      <vfs_project >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\default.gpr</vfs_project>
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\barrel.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Szymon\Documents\GitHub\Embedded-Systems-Labs\Project\Model\pump.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
