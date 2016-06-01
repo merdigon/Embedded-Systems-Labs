@@ -45,7 +45,7 @@ package body Heater is
          if FirstCharacter = RequestCommStart then
             if To_String(Request) = "R:HEAT" then
                Heater_Command := Heat;
-               String'Output (Channel, "Ok");
+               String'Output (Channel, "OK");
                Put_Line("Heating on");
             elsif To_String(Request) = "R:OFF" then
                Heater_Command := Off;

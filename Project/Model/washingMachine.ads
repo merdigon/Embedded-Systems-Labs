@@ -7,6 +7,8 @@ use CommonData;
 package WashingMachine is
    
    type Washing_States is (Starting, FirstSlowSpin, SecondSlowSpin, Spin, ThirdSlowSpin, Ending);
+   type InterfaceToWrite is (User, Extended);
+   type WashingType is (ECO, Normal, Extended);
  
    Barrel_Command : Barrel_Commands        := Off with Atomic;
    Pump_In_Command : Pump_Commands        := Close with Atomic;
@@ -14,6 +16,8 @@ package WashingMachine is
    Heater_Command : Heater_Commands       := Off with Atomic;
    Pump_In_Water_Migration : Water_Migration_Via := Normal with Atomic;
    Washing_State : Washing_States := Starting with Atomic;
+   InterfaceToWriteKind : InterfaceToWrite := User with Atomic;
+   Choosen_Washing_Type : WashingType := Normal with Atomic;
    
    protected type Shared_True_False(Pri : System.Priority)
      with Priority => Pri is

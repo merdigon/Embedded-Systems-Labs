@@ -8,6 +8,8 @@ with Ada.Float_Text_IO;
 use Ada.Float_Text_IO;
 with Ada.Exceptions;
 use Ada.Exceptions;
+with Ada.Strings.Unbounded;
+use Ada.Strings.Unbounded;
 with GNAT.Sockets; use GNAT.Sockets;
 with CommonData; use CommonData;
 
@@ -31,20 +33,41 @@ package body WashingMachine is
 
    task body ModelTask is
       Next : Ada.Real_Time.Time;
+	  MaxTempInBarrel : Float := 55.0;
       Period : constant Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(1000);
       Shift : constant Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(30);
       WaitingTime : constant Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(500);
       WaitingStopper : Ada.Real_Time.Time;
-      FirstSlowSpinTime : constant Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(10000);
-      SecondSlowSpinTime : constant Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(10000);
-      FastSpinTime : constant Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(5000);
-      ThirdSlowSpinTime : constant Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(10000);
+      FirstSlowSpinTime : Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(20000);
+      SecondSlowSpinTime : Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(20000);
+      FastSpinTime : Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(10000);
+      ThirdSlowSpinTime : Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(20000);
    begin
       Next := Ada.Real_Time.Clock + Shift;
       loop
          delay until Next;
          if Washing_State = Starting then
             if Door_Closed.Output then
+				case Choosen_Washing_Type is
+					when ECO =>
+						FirstSlowSpinTime := Ada.Real_Time.Milliseconds(10000);
+						SecondSlowSpinTime := Ada.Real_Time.Milliseconds(10000);
+						FastSpinTime := Ada.Real_Time.Milliseconds(5000);
+						ThirdSlowSpinTime := Ada.Real_Time.Milliseconds(10000);
+						MaxTempInBarrel := 25.0;
+					when Normal =>
+						FirstSlowSpinTime := Ada.Real_Time.Milliseconds(20000);
+						SecondSlowSpinTime := Ada.Real_Time.Milliseconds(20000);
+						FastSpinTime := Ada.Real_Time.Milliseconds(1000);
+						ThirdSlowSpinTime := Ada.Real_Time.Milliseconds(20000);
+						MaxTempInBarrel := 55.0;
+					when Extended =>
+						FirstSlowSpinTime := Ada.Real_Time.Milliseconds(40000);
+						SecondSlowSpinTime := Ada.Real_Time.Milliseconds(40000);
+						FastSpinTime := Ada.Real_Time.Milliseconds(2000);
+						ThirdSlowSpinTime := Ada.Real_Time.Milliseconds(40000);
+						MaxTempInBarrel := 85.0;
+				end case;	
                Door_Blocked.Input(true);
                Washing_State := FirstSlowSpin;
             end if;
@@ -60,7 +83,7 @@ package body WashingMachine is
             Barrel_Command := SlowTwoWay;
             Heater_Command := Heat;
             WaitingStopper := Ada.Real_Time.Clock + Shift;
-            while Barrel_Water_Temp.Output < 55.0 loop
+            while Barrel_Water_Temp.Output < MaxTempInBarrel loop
                delay until WaitingStopper;
                WaitingStopper := Ada.Real_Time.Clock + WaitingTime;
             end loop;
@@ -128,6 +151,9 @@ package body WashingMachine is
             Washing_State := Ending;
          elsif Washing_State = Ending then
             Door_Blocked.Input(false);
+			Door_Closed.Input(false);
+			InterfaceToWriteKind := User;
+			Washing_State := Starting;
          end if;
          Next := Next + Period;
       end loop;
@@ -157,7 +183,7 @@ package body WashingMachine is
          if Barrel_Command /= Previous_Barrel_Command then
             String'Output (Channel, "R:" & Barrel_Command'Img);
             Previous_Barrel_Command := Barrel_Command;
-            if String'Input(Channel) /= "Ok" then
+            if String'Input(Channel) /= "OK" then
                Put_Line("Barrel error!");
             end if;
          end if;
@@ -201,7 +227,7 @@ package body WashingMachine is
          if Heater_Command /= Previous_Heater_Command then
             String'Output (Channel, "R:" & Heater_Command'Img);
             Previous_Heater_Command := Heater_Command;
-            if String'Input(Channel) /= "Ok" then
+            if String'Input(Channel) /= "OK" then
                Put_Line("Heater error!");
             end if;
          end if;
@@ -212,8 +238,10 @@ package body WashingMachine is
 
          if Barrel_Water_Level.Output = 0.0 and Previous_Water_Level /= 0.0 then
             String'Output (Channel, "R:RESET");
-            if String'Input (Channel) /= "Ok" then
+            if String'Input (Channel) /= "OK" then
                Put_Line("Blad resetu temperatury!");
+            else
+              Previous_Water_Level := 0.0;
             end if;
          else
             Previous_Water_Level := Barrel_Water_Level.Output;
@@ -236,10 +264,8 @@ package body WashingMachine is
       Data     : Float := 0.0;
       Previous_Pump_In_Command : Pump_Commands := Close;
       Previous_Pump_Out_Command : Pump_Commands := Close;
-      Previous_Powder_Level : Float := 0.0;
-      Current_Powder_Level : Float := 0.0;
-      Current_Liquid_Level : Float := 0.0;
-      Previous_Liquid_Level : Float := 0.0;
+      Previous_Door_Close_Status : Boolean := false;
+	  Message : Ada.Strings.Unbounded.Unbounded_String;
    begin
       Next := Ada.Real_Time.Clock;
       Address.Addr := Addresses (Get_Host_By_Name (Host_Name), 1);
@@ -257,38 +283,39 @@ package body WashingMachine is
                String'Output (Channel, "R:In:" & Pump_In_Command'Img);
             end if;
             Previous_Pump_In_Command := Pump_In_Command;
-            if String'Input(Channel) /= "Ok" then
-               Put_Line("Pump In error!");
+			Message := To_Unbounded_String(String'Input(Channel));
+            if To_String(Message) /= "OK" then
+               Put_Line("Pump In error!" & To_String(Message));
             end if;
          end if;
 
          if Pump_Out_Command /= Previous_Pump_Out_Command then
             String'Output (Channel, "R:Out:" & Pump_Out_Command'Img);
             Previous_Pump_Out_Command := Pump_Out_Command;
-            if String'Input(Channel) /= "Ok" then
+            if String'Input(Channel) /= "OK" then
                Put_Line("Pump Out error!");
             end if;
          end if;
 
-         Current_Powder_Level := Powder_Level.Output;
-         if Door_Blocked.Output = false and Current_Powder_Level /= Previous_Powder_Level then
+         if Door_Closed.Output = true and Previous_Door_Close_Status = false then
             String'Output (Channel, "SET:POWDER");
-            Float'Output( Channel, Current_Powder_Level);
-            if String'Input (Channel) /= "Ok" then
+            Float'Output( Channel, Powder_Level.Output);
+            if String'Input (Channel) /= "OK" then
                Put_Line("Blad ustawienia proszku!");
             end if;
-            Previous_Powder_Level := Current_Powder_Level;
-         end if;
-
-         Current_Liquid_Level := Wash_Liquid_Level.Output;
-         if Door_Blocked.Output = false and Current_Liquid_Level /= Previous_Liquid_Level then
-            String'Output (Channel, "SET:POWDER");
-            Float'Output( Channel, Current_Liquid_Level);
-            if String'Input (Channel) /= "Ok" then
-               Put_Line("Blad ustawienia proszku!");
+			
+			String'Output (Channel, "SET:LIQUID");
+            Float'Output( Channel, Wash_Liquid_Level.Output);
+            if String'Input (Channel) /= "OK" then
+               Put_Line("Blad ustawienia plynu!");
             end if;
-            Previous_Liquid_Level := Current_Liquid_Level;
+			
+			Previous_Door_Close_Status := true;
          end if;
+		 
+		 if Door_Closed.Output = false then
+			Previous_Door_Close_Status := false;
+			end if;
 
          if Pump_In_Water_Migration = Powder then
             String'Output (Channel, "GET:POWDER");
@@ -339,7 +366,14 @@ package body WashingMachine is
 
    protected body Shared_True_False  is
       function Output return Boolean is (Data);
-      function Image return String is (Data'Img);
+      function Image return String is 
+	  begin
+		if Data = false then
+			return "X";
+		else
+			return "O";
+			end if;
+	  end Image;
       procedure Input(D: in Boolean) is
       begin
          Data := D;
@@ -389,6 +423,6 @@ package body WashingMachine is
    end Shared_Rotation;
 
 begin
-   Door_Closed.Input(true);
+   Door_Closed.Input(false);
    Door_Blocked.Input(false);
 end WashingMachine;

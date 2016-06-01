@@ -49,12 +49,12 @@ package body Pump is
          if FirstCharacter = RequestCommStart then
             if To_String(Request)(1..9) = "R:In:OPEN" then
                Pump_In_Command := Open;
-               String'Output (Channel, "Ok");
-               if To_String(Request)(To_String(Request)'Length - 6..To_String(Request)'Length) = "POWDER" then
+               String'Output (Channel, "OK");
+               if To_String(Request)(To_String(Request)'Length - 5..To_String(Request)'Length) = "POWDER" then
                   Pump_In_Water_Migration := Powder;
-               elsif To_String(Request)(To_String(Request)'Length - 6..To_String(Request)'Length) = "NORMAL" then
+               elsif To_String(Request)(To_String(Request)'Length - 5..To_String(Request)'Length) = "NORMAL" then
                   Pump_In_Water_Migration := Normal;
-               elsif To_String(Request)(To_String(Request)'Length - 6..To_String(Request)'Length) = "LIQUID" then
+               else
                   Pump_In_Water_Migration := Liquid;
                end if;
                Put_Line("Open Pump In -> " & Pump_In_Water_Migration'Img);
@@ -89,10 +89,12 @@ package body Pump is
          elsif To_String(Request) = "SET:POWDER" then
             Curr_Powder_Level := Float'Input (Channel);
             Powder_Level.Input(Curr_Powder_Level);
+			String'Output(Channel, "OK");
             Put_Line("Set powder level on " & Curr_Powder_Level'Img & "%.");
          elsif To_String(Request) = "SET:LIQUID" then
             Curr_Liquid_Level := Float'Input (Channel);
             Washing_Liquid_Level.Input(Curr_Liquid_Level);
+			String'Output(Channel, "OK");
             Put_Line("Set liquid level on " & Curr_Liquid_Level'Img & "%.");
          end if;
          Delete(Request, 1, To_String(Request)'Length);
@@ -176,5 +178,7 @@ package body Pump is
 
 begin
    Barrel_Water_Level.Input(0.0);
+   Powder_Level.Input(0.0);
+   Washing_Liquid_Level.Input(100.0);
    Pump_In_Water_Migration := Normal;
 end Pump;

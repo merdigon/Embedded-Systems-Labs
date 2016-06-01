@@ -47,7 +47,7 @@ package body Barrel is
          if FirstCharacter = RequestCommStart then
             if To_String(Request) = "R:SLOWTWOWAY" then
                Barrel_Command := SlowTwoWay;
-               String'Output (Channel, "Ok");
+               String'Output (Channel, "OK");
                Put_Line("Slow Two Way Spin");
             elsif To_String(Request) = "R:SPIN" then
                Barrel_Command := Spin;
