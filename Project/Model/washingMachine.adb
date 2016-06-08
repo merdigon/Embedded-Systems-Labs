@@ -27,7 +27,8 @@ package body WashingMachine is
    task PumpReceiver
      with Priority => (System.Default_Priority+4);
 
-
+   task SimulationCounter
+     with Priority => (System.Default_Priority+5);
    --------------------------------------------------------------------
    --MAIN PROCEDURE
 
@@ -58,16 +59,16 @@ package body WashingMachine is
 					when Normal =>
 						FirstSlowSpinTime := Ada.Real_Time.Milliseconds(20000);
 						SecondSlowSpinTime := Ada.Real_Time.Milliseconds(20000);
-						FastSpinTime := Ada.Real_Time.Milliseconds(1000);
+						FastSpinTime := Ada.Real_Time.Milliseconds(10000);
 						ThirdSlowSpinTime := Ada.Real_Time.Milliseconds(20000);
 						MaxTempInBarrel := 55.0;
 					when Extended =>
 						FirstSlowSpinTime := Ada.Real_Time.Milliseconds(40000);
 						SecondSlowSpinTime := Ada.Real_Time.Milliseconds(40000);
-						FastSpinTime := Ada.Real_Time.Milliseconds(2000);
+						FastSpinTime := Ada.Real_Time.Milliseconds(20000);
 						ThirdSlowSpinTime := Ada.Real_Time.Milliseconds(40000);
 						MaxTempInBarrel := 85.0;
-				end case;	
+				end case;
                Door_Blocked.Input(true);
                Washing_State := FirstSlowSpin;
             end if;
@@ -154,6 +155,8 @@ package body WashingMachine is
 			Door_Closed.Input(false);
 			InterfaceToWriteKind := User;
 			Washing_State := Starting;
+			Wash_Liquid_Level.Input(0.0);
+			Powder_Level.Input(0.0);
          end if;
          Next := Next + Period;
       end loop;
@@ -341,7 +344,21 @@ package body WashingMachine is
          Put_Line(Exception_Name (E) & ": " & Exception_Message (E));
    end PumpReceiver;
 
-
+	task body SimulationCounter is
+		Next : Ada.Real_Time.Time;
+      Period   : constant Ada.Real_Time.Time_Span := Ada.Real_Time.Milliseconds(1000);
+	begin
+		Next := Ada.Real_Time.Clock;
+		loop 
+			delay until Next;
+			if Door_Closed.Output = true then
+				SimulationTime := SimulationTime + 1;
+			else
+				SimulationTime := 0;
+			end if;
+			Next := Next + Period;
+		end loop;
+	end SimulationCounter;
 
    ------------------------------------------------------------------------------
    --SHARED VALUES

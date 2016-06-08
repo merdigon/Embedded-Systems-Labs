@@ -96,10 +96,14 @@ package body Terminal is
       Screen.Write_XY(22,9, "|", Underlined);
       Screen.Write_XY(25,9, Barrel_Water_Temp.Image & "C", Underlined);
       Screen.Write_XY(40,9, "|", Bright);
+      Screen.Write_XY(42,9, "Czas rzeczywisty", Underlined);
+      Screen.Write_XY(58,9, "  " & Integer'Image(SimulationTime * 36) & "s", Underlined);
       Screen.Write_XY(2,10, "Rozkaz", Underlined);
       Screen.Write_XY(22,10, "|", Underlined);
       Screen.Write_XY(25,10, Heater_Command'Img, Underlined);
       Screen.Write_XY(40,10, "|", Bright);
+      Screen.Write_XY(42,10, "Czas symulacji", Underlined);
+      Screen.Write_XY(58,10, "  " & SimulationTime'Img & "s", Underlined);
       Screen.Write_XY(2,11,"-------------------------------------------------------------------------", Bright);
       Screen.Write_XY(37,12, "Pompa", Underlined);
       Screen.Write_XY(2,13,"-------------------------------------------------------------------------", Bright);
@@ -150,8 +154,10 @@ package body Terminal is
       Screen.Write_XY(60,4, "              ", Underlined);
       Screen.Write_XY(60,4, Barrel_Command'Img, Underlined);
       Screen.Write_XY(25,9, Barrel_Water_Temp.Image & "C", Underlined);
+      Screen.Write_XY(58,9, "  " & Integer'Image(SimulationTime * 36) & "s", Underlined);
       Screen.Write_XY(25,10, "    ", Underlined);
       Screen.Write_XY(25,10, Heater_Command'Img, Underlined);
+      Screen.Write_XY(58,10, "  " & SimulationTime'Img & "s", Underlined);
       Screen.Write_XY(25,14, Barrel_Water_Level.Image & "%", Underlined);
       Screen.Write_XY(25,16, "     ", Underlined);
       Screen.Write_XY(25,16, Pump_In_Command'Img, Underlined);

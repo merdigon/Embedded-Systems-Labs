@@ -2,6 +2,8 @@ pragma Profile(Ravenscar);
 with System;
 with CommonData;
 use CommonData;
+with Ada.Real_Time;
+use Ada.Real_Time;
 
 
 package WashingMachine is
@@ -18,6 +20,7 @@ package WashingMachine is
    Washing_State : Washing_States := Starting with Atomic;
    InterfaceToWriteKind : InterfaceToWrite := User with Atomic;
    Choosen_Washing_Type : WashingType := Normal with Atomic;
+   SimulationTime : Integer := 0;
    
    protected type Shared_True_False(Pri : System.Priority)
      with Priority => Pri is
